@@ -3,517 +3,305 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Joyeux Anniversaire Papa</title>
+    <title>Lettre d'Anniversaire - Romane</title>
     <style>
-        * {
-            margin: 0;
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { 
+            background: linear-gradient(135deg, #faf8f5 0%, #f0ebe3 50%, #e8ddd0 100%);
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; 
             padding: 0;
-            box-sizing: border-box;
-        }
-
-        body {
-            font-family: 'Georgia', 'Garamond', serif;
-            background: linear-gradient(135deg, #f5f3f0 0%, #e8e3dd 100%);
             min-height: 100vh;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            padding: 20px;
-            overflow: hidden;
-        }
-
-        .container {
-            width: 100%;
-            max-width: 600px;
-            height: 100vh;
-            max-height: 800px;
             position: relative;
+            overflow-x: hidden;
         }
-
-        .envelope-screen {
-            position: absolute;
-            width: 100%;
-            height: 100%;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            opacity: 1;
-            transition: opacity 0.6s ease-out;
-            z-index: 10;
-        }
-
-        .envelope-screen.hidden {
-            opacity: 0;
-            pointer-events: none;
-        }
-
-        .envelope-wrapper {
-            text-align: center;
-            animation: fadeIn 0.8s ease-out;
-        }
-
-        @keyframes fadeIn {
-            from {
-                opacity: 0;
-                transform: scale(0.95);
-            }
-            to {
-                opacity: 1;
-                transform: scale(1);
-            }
-        }
-
-        .decorative-line {
-            width: 80px;
-            height: 2px;
-            background: #c41e3a;
-            margin: 0 auto 30px;
-            opacity: 0.6;
-        }
-
-        .envelope {
-            width: 340px;
-            height: 220px;
-            margin: 0 auto 50px;
-            position: relative;
-            perspective: 1000px;
-        }
-
-        .envelope-body {
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(135deg, #faf8f5 0%, #f5f0e8 100%);
-            border: 2px solid #d4ccc0;
-            position: relative;
-            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.12);
-            animation: envelopeFloat 3s ease-in-out infinite;
-        }
-
-        @keyframes envelopeFloat {
-            0%, 100% {
-                transform: translateY(0);
-            }
-            50% {
-                transform: translateY(-8px);
-            }
-        }
-
-        .envelope-flap {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 55%;
-            background: linear-gradient(135deg, #f5f0e8 0%, #e8ddd0 100%);
-            border: 2px solid #d4ccc0;
-            border-bottom: none;
-            clip-path: polygon(0 0, 50% 100%, 100% 0);
-            transform-origin: top center;
-            transition: transform 0.8s cubic-bezier(0.68, -0.55, 0.265, 1.55);
-            transform: rotateX(0);
-            z-index: 5;
-        }
-
-        .envelope-flap.open {
-            transform: rotateX(-180deg);
-        }
-
-        .envelope-line {
-            position: absolute;
-            top: 50%;
-            left: 0;
-            right: 0;
-            height: 1px;
-            background: linear-gradient(to right, transparent, #d4ccc0, transparent);
-            z-index: 4;
-        }
-
-        .wax-seal-container {
-            position: absolute;
-            bottom: 25px;
-            left: 50%;
-            transform: translateX(-50%);
-            z-index: 8;
-        }
-
-        .seal-circle {
-            width: 120px;
-            height: 120px;
-            background: radial-gradient(circle at 35% 35%, #d41f3a, #8b1428);
-            border-radius: 50%;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            box-shadow: 0 10px 30px rgba(139, 20, 40, 0.4), inset -4px -4px 8px rgba(0, 0, 0, 0.35), inset 4px 4px 10px rgba(255, 255, 255, 0.2);
-            animation: sealPulse 2.5s ease-in-out infinite;
-            border: 3px solid rgba(139, 20, 40, 0.3);
-        }
-
-        @keyframes sealPulse {
-            0%, 100% {
-                transform: scale(1);
-            }
-            50% {
-                transform: scale(1.03);
-            }
-        }
-
-        .seal-text {
-            font-size: 48px;
-            font-weight: 700;
-            color: #fef8f0;
-            letter-spacing: 4px;
-            font-family: 'Garamond', serif;
-            text-shadow: 0 3px 6px rgba(0, 0, 0, 0.5);
-        }
-
-        .open-button {
-            background: #8b1428;
-            color: #fefdfb;
-            border: none;
-            padding: 15px 50px;
-            font-size: 15px;
-            font-family: 'Georgia', serif;
-            cursor: pointer;
-            border-radius: 60px;
-            transition: all 0.3s ease;
-            box-shadow: 0 8px 25px rgba(139, 20, 40, 0.3);
-            letter-spacing: 1px;
-            font-weight: 500;
-        }
-
-        .open-button:hover {
-            background: #a51d30;
-            transform: translateY(-3px);
-            box-shadow: 0 12px 35px rgba(139, 20, 40, 0.4);
-        }
-
-        .open-button:active {
-            transform: translateY(-1px);
-        }
-
-        .letter-screen {
-            position: absolute;
-            width: 100%;
-            height: 100%;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            opacity: 0;
-            transition: opacity 0.6s ease-out 0.3s;
-            pointer-events: none;
-            z-index: 5;
-            padding: 20px;
-        }
-
-        .letter-screen.visible {
-            opacity: 1;
-            pointer-events: auto;
-        }
-
-        .letter-container {
-            width: 100%;
-            max-width: 560px;
-            max-height: 90vh;
-            overflow-y: auto;
-            animation: letterAppear 0.8s ease-out;
-        }
-
-        @keyframes letterAppear {
-            from {
-                opacity: 0;
-                transform: translateY(20px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-        .letter {
-            background: linear-gradient(135deg, #faf8f5 0%, #f5f0e8 100%);
-            padding: 60px 50px;
-            border: 1.5px solid #d4ccc0;
-            box-shadow: 0 25px 60px rgba(0, 0, 0, 0.15);
-            position: relative;
-            min-height: 750px;
-        }
-
-        .letter::before {
-            content: '';
-            position: absolute;
+        
+        .bg-pattern {
+            position: fixed;
             top: 0;
             left: 0;
             right: 0;
             bottom: 0;
+            opacity: 0.03;
             background-image: 
-                repeating-linear-gradient(
-                    0deg,
-                    transparent,
-                    transparent 2px,
-                    rgba(212, 204, 192, 0.05) 2px,
-                    rgba(212, 204, 192, 0.05) 3px
-                );
+                repeating-linear-gradient(45deg, transparent, transparent 10px, #8b2c32 10px, #8b2c32 20px);
             pointer-events: none;
-        }
-
-        .letter-decorative-top {
-            text-align: center;
-            margin-bottom: 35px;
-            padding-bottom: 20px;
-            border-bottom: 1px solid rgba(212, 204, 192, 0.3);
-        }
-
-        .ornament {
-            font-size: 18px;
-            color: #c41e3a;
-            opacity: 0.7;
-            letter-spacing: 8px;
-        }
-
-        .letter-content {
-            position: relative;
             z-index: 1;
-            font-size: 14px;
-            line-height: 1.9;
-            color: #2a2a2a;
-            font-family: 'Georgia', serif;
         }
 
-        .letter-greeting {
-            font-size: 18px;
-            font-weight: 600;
-            color: #c41e3a;
-            margin-bottom: 28px;
-            font-style: italic;
-            letter-spacing: 0.5px;
+        .hearts-bg {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            pointer-events: none;
+            z-index: 0;
+            overflow: hidden;
         }
 
-        .letter-content p {
-            margin-bottom: 20px;
-            text-align: justify;
-        }
-
-        .letter-list {
-            margin-left: 28px;
-            font-style: italic;
-            color: #555;
-            line-height: 2;
-        }
-
-        .letter-signature {
-            margin-top: 45px;
-            text-align: right;
-            font-style: italic;
-            padding-top: 25px;
-            border-top: 1px solid rgba(212, 204, 192, 0.3);
-        }
-
-        .signature-name {
+        .heart {
+            position: absolute;
+            opacity: 0.08;
+            color: #8b2c32;
             font-size: 24px;
-            font-weight: 600;
-            color: #c41e3a;
-            display: inline-block;
-            margin-top: 10px;
-            letter-spacing: 1px;
+            animation: float 6s infinite ease-in-out;
         }
 
-        .letter-ps {
-            margin-top: 20px;
-            font-size: 13px;
-            color: #888;
-            font-style: italic;
+        @keyframes float {
+            0%, 100% { transform: translateY(0px) rotate(0deg); }
+            50% { transform: translateY(-20px) rotate(5deg); }
         }
-
-        .letter-container::-webkit-scrollbar {
-            width: 6px;
+        
+        .container { max-width: 900px; margin: 0 auto; position: relative; z-index: 2; }
+        
+        .envelope-state, .letter-state { display: none; }
+        .envelope-state.active, .letter-state.active { display: block; }
+        
+        .envelope-screen { 
+            min-height: 100vh; 
+            display: flex; 
+            flex-direction: column; 
+            align-items: center; 
+            justify-content: center; 
+            padding: 40px 20px;
+            position: relative;
         }
-
-        .letter-container::-webkit-scrollbar-track {
-            background: rgba(212, 204, 192, 0.1);
+        
+        .decorative-top {
+            position: absolute;
+            top: 60px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 120px;
+            height: 60px;
+            opacity: 0.08;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 60"><path d="M20 30 Q30 10 60 10 Q90 10 100 30" stroke="%238b2c32" stroke-width="2" fill="none"/><circle cx="60" cy="30" r="3" fill="%238b2c32"/></svg>');
         }
-
-        .letter-container::-webkit-scrollbar-thumb {
-            background: rgba(196, 30, 58, 0.35);
-            border-radius: 3px;
+        
+        .decorative-bottom {
+            position: absolute;
+            bottom: 60px;
+            right: 40px;
+            width: 80px;
+            height: 80px;
+            opacity: 0.06;
+            border: 1px solid #8b2c32;
+            border-radius: 50%;
         }
-
-        .letter-container::-webkit-scrollbar-thumb:hover {
-            background: rgba(196, 30, 58, 0.6);
+        
+        .header-line { width: 60px; height: 1px; background: #8b2c32; margin-bottom: 50px; }
+        
+        .envelope-wrapper { text-align: center; }
+        .envelope-3d { width: 180px; height: 115px; margin: 0 auto 50px; perspective: 1000px; }
+        .envelope-card { 
+            width: 100%; 
+            height: 100%; 
+            background: linear-gradient(135deg, #fefdfb 0%, #f5f0e8 100%); 
+            border: 1px solid #d4ccc0; 
+            border-radius: 3px; 
+            box-shadow: 0 10px 40px rgba(0,0,0,0.12), inset 0 1px 0 rgba(255,255,255,0.5); 
+            position: relative; 
         }
-
-        @media (max-width: 600px) {
-            .envelope {
-                width: 300px;
-                height: 190px;
-            }
-
-            .seal-circle {
-                width: 100px;
-                height: 100px;
-            }
-
-            .seal-text {
-                font-size: 38px;
-                letter-spacing: 2px;
-            }
-
-            .letter {
-                padding: 45px 35px;
-                min-height: auto;
-            }
-
-            .letter-content {
-                font-size: 13px;
-                line-height: 1.8;
-            }
-
-            .letter-greeting {
-                font-size: 16px;
-            }
-
-            .open-button {
-                padding: 12px 38px;
-                font-size: 14px;
-            }
-
-            .decorative-line {
-                width: 60px;
-                margin-bottom: 20px;
-            }
-
-            .letter-container {
-                max-height: 80vh;
-            }
+        .envelope-flap { 
+            position: absolute; 
+            top: -1px; 
+            left: 0; 
+            width: 100%; 
+            height: 58px; 
+            background: linear-gradient(135deg, #f5f0e8 0%, #e8ddd0 100%); 
+            border: 1px solid #d4ccc0; 
+            border-bottom: none; 
+            clip-path: polygon(0 0, 50% 100%, 100% 0); 
+            transform-origin: top center; 
+            transition: transform 0.6s cubic-bezier(0.68, -0.55, 0.265, 1.55); 
         }
-
-        @media (max-width: 400px) {
-            .envelope {
-                width: 260px;
-                height: 160px;
-            }
-
-            .seal-circle {
-                width: 85px;
-                height: 85px;
-                bottom: 15px;
-            }
-
-            .seal-text {
-                font-size: 32px;
-                letter-spacing: 1.5px;
-            }
-
-            .letter {
-                padding: 35px 25px;
-            }
-
-            .letter-content {
-                font-size: 12px;
-                line-height: 1.7;
-            }
-
-            .letter-greeting {
-                font-size: 14px;
-            }
-
-            .letter-list {
-                margin-left: 18px;
-            }
-
-            .open-button {
-                padding: 10px 30px;
-                font-size: 13px;
-            }
+        .envelope-flap.open { transform: rotateX(-180deg); }
+        
+        .seal-container { position: absolute; bottom: -40px; left: 50%; transform: translateX(-50%); z-index: 10; }
+        .seal { 
+            width: 100px; 
+            height: 100px; 
+            background: radial-gradient(circle at 35% 35%, #d41f3a, #8b1428); 
+            border-radius: 50%; 
+            display: flex; 
+            align-items: center; 
+            justify-content: center; 
+            box-shadow: 0 8px 24px rgba(139, 20, 40, 0.3), inset -2px -2px 4px rgba(0,0,0,0.3), inset 2px 2px 6px rgba(255,255,255,0.15); 
+            border: 2px solid rgba(139, 20, 40, 0.2); 
         }
+        .seal-text { font-size: 36px; font-weight: 700; color: #fef8f0; letter-spacing: 2px; text-shadow: 0 2px 4px rgba(0,0,0,0.4); }
+        
+        .envelope-info { margin-top: 80px; text-align: center; }
+        
+        .btn-primary { 
+            padding: 13px 48px; 
+            background: #4a1820; 
+            color: #fff; 
+            border: none;
+            border-radius: 4px; 
+            font-size: 14px; 
+            font-weight: 500;
+            cursor: pointer; 
+            transition: all 0.2s; 
+            box-shadow: 0 4px 12px rgba(74, 24, 32, 0.25);
+        }
+        .btn-primary:hover { 
+            background: #2d0f14; 
+            box-shadow: 0 6px 16px rgba(74, 24, 32, 0.35); 
+        }
+        
+        .letter-screen { padding: 40px 20px; }
+        
+        .letter-container { 
+            background: rgba(255, 255, 255, 0.85); 
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(212, 204, 192, 0.5); 
+            border-radius: 4px; 
+            max-width: 900px; 
+            margin: 0 auto 30px; 
+            box-shadow: 0 8px 32px rgba(0,0,0,0.08); 
+        }
+        
+        .letter-top { padding: 40px 45px 0; text-align: center; border-bottom: 1px solid #e8e8e8; padding-bottom: 25px; }
+        .letter-ornament { font-size: 14px; color: #8b2c32; letter-spacing: 4px; }
+        
+        .letter-content { padding: 40px 45px; font-size: 15px; line-height: 1.85; color: #333; }
+        .letter-content p { margin-bottom: 18px; text-align: justify; }
+        .greeting { font-size: 16px; color: #8b2c32; font-weight: 500; margin-bottom: 22px; }
+        
+        .letter-list { margin: 20px 0 20px 30px; font-style: italic; color: #666; line-height: 1.9; font-size: 14px; }
+        .letter-list-item { margin-bottom: 8px; }
+        
+        .letter-signature { margin-top: 35px; padding-top: 25px; border-top: 1px solid #e8e8e8; text-align: right; font-style: italic; }
+        .sig-name { display: block; margin-top: 8px; font-weight: 600; font-style: normal; color: #8b2c32; font-size: 18px; }
+        .ps { margin-top: 15px; font-size: 13px; color: #999; }
+        
+        .letter-footer { display: flex; justify-content: space-between; align-items: center; padding: 20px 45px; border-top: 1px solid #e8e8e8; font-size: 12px; color: #8b6f68; }
+        
+        .controls { display: flex; gap: 12px; justify-content: center; max-width: 900px; margin: 0 auto; }
+        .ctrl-btn { padding: 10px 24px; border: 1px solid #d4ccc0; background: rgba(255,255,255,0.7); backdrop-filter: blur(10px); border-radius: 4px; font-size: 13px; cursor: pointer; color: #333; transition: all 0.2s; }
+        .ctrl-btn:hover { background: rgba(255,255,255,0.95); border-color: #8b2c32; }
     </style>
 </head>
 <body>
+    <div class="hearts-bg" id="heartsContainer"></div>
+    <div class="bg-pattern"></div>
+
     <div class="container">
-        <div class="envelope-screen" id="envelopeScreen">
-            <div class="envelope-wrapper">
-                <div class="decorative-line"></div>
+        <!-- ENVELOPE STATE -->
+        <div class="envelope-state active">
+            <div class="envelope-screen">
+                <div class="decorative-top"></div>
+                <div class="decorative-bottom"></div>
                 
-                <div class="envelope">
-                    <div class="envelope-flap"></div>
-                    <div class="envelope-body">
-                        <div class="envelope-line"></div>
-                        <div class="wax-seal-container">
-                            <div class="seal-circle">
-                                <span class="seal-text">JL</span>
+                <div class="header-line"></div>
+                
+                <div class="envelope-wrapper">
+                    <div class="envelope-3d">
+                        <div class="envelope-card">
+                            <div class="envelope-flap" id="flap"></div>
+                            <div class="seal-container">
+                                <div class="seal">
+                                    <span class="seal-text">JL</span>
+                                </div>
                             </div>
                         </div>
                     </div>
+                    
+                    <div class="envelope-info">
+                        <button class="btn-primary" onclick="openLetter();">Ouvrir la lettre</button>
+                    </div>
                 </div>
-
-                <button class="open-button" id="openButton">Ouvrir la lettre</button>
             </div>
         </div>
 
-        <div class="letter-screen" id="letterScreen">
+        <!-- LETTER STATE -->
+        <div class="letter-state">
             <div class="letter-container">
-                <div class="letter">
-                    <div class="letter-decorative-top">
-                        <div class="ornament">✦ ✦ ✦</div>
+                <div class="letter-top">
+                    <div class="letter-ornament">✦ ✦ ✦</div>
+                </div>
+                
+                <div class="letter-content">
+                    <p class="greeting">Je te souhaite un très bel anniversaire Papa,</p>
+
+                    <p>J'avais envie de t'écrire une lettre, car je ne peux pas être à tes côtés pour cette journée importante. Une année de plus à ton actif, c'est quelque chose quand même ! Alors, depuis Reims, voilà ce que j'avais à te dire :</p>
+
+                    <p>Je souhaitais tout d'abord te rappeler à quel point je t'aime et à quel point je suis reconnaissante que la vie m'ait donné un père comme toi. Toujours là pour me motiver, me faire rire, me protéger et me montrer l'exemple à suivre. Surtout, pense pas que c'est ChatGPT qui a écrit cela, j'ai choisi les termes avec attention, je le pense vraiment. Tu es un père formidable… même si chiant par moments mais bon moi aussi donc bon on va rien dire 😂</p>
+
+                    <p>Merci pour la vie que vous m'offrez avec Maman. La plus belle chose, c'est la famille, et je pense que vous pouvez être fiers de la nôtre. On n'est pas parfaits, mais on s'aime et on est unis. Même quand on s'engueule, on ne reste jamais loin les uns des autres, ahaha. (Est-ce que ce serait pas la plus belle preuve d'amour finalement qu'on puisse se faire ?)</p>
+
+                    <p>En tout cas, j'espère que cette nouvelle année t'apportera ce que tu souhaites au plus profond de toi. En particulier du bonheur, de la paix et surtout la santé. Et que tu arrêtes de manger dans la nuit… ah non c'est un peu trop ambitieux on garde ça pour l'année prochaine 😂</p>
+
+                    <p>Je n'ai pas encore 53 ans (Dieu merci ahah), mais n'oublie pas l'enfant qui sommeille en toi et ce qui le rendait heureux. Alors, n'hésite pas à te faire plaisir un peu chaque jour, même dans les petites choses, car on n'a qu'une seule vie. Peut-être que dans la prochaine, tu seras un hérisson ? Donc autant en profiter un maximum et rêver grand.</p>
+
+                    <p>J'aime me dire qu'il n'est jamais trop tard et quand je stresse ou que je veux baisser les bras je me rappelle que :</p>
+
+                    <div class="letter-list">
+                        <div class="letter-list-item">— Winston Churchill est devenu Premier ministre britannique à 65 ans</div>
+                        <div class="letter-list-item">— Harland Sanders a franchisé KFC à 62 ans et est devenu millionnaire à 74 ans</div>
+                        <div class="letter-list-item">— Morgan Freeman a obtenu son premier très grand rôle au cinéma à 50 ans</div>
                     </div>
 
-                    <div class="letter-content">
-                        <p class="letter-greeting">Je te souhaite un très bel anniversaire Papa,</p>
+                    <p>Bref tout ce blablabla pour te dire merci d'être cette personne aimante, inspirante et un peu folle aussi.</p>
 
-                        <p>J'avais envie de t'écrire une lettre, car je ne peux pas être à tes côtés pour cette journée importante. Une année de plus à ton actif, c'est quelque chose quand même ! Alors, depuis Reims, voilà ce que j'avais à te dire :</p>
+                    <p>Je t'aime, Papa.</p>
 
-                        <p>Je souhaitais tout d'abord te rappeler à quel point je t'aime et à quel point je suis reconnaissante que la vie m'ait donné un père comme toi. Toujours là pour me motiver, me faire rire, me protéger et me montrer l'exemple à suivre. Surtout, pense pas que c'est ChatGPT qui a écrit cela, j'ai choisi les termes avec attention, je le pense vraiment. Tu es un père formidable… même si chiant par moments mais bon moi aussi donc bon on va rien dire 😂</p>
-
-                        <p>Merci pour la vie que vous m'offrez avec Maman. La plus belle chose, c'est la famille, et je pense que vous pouvez être fiers de la nôtre. On n'est pas parfaits, mais on s'aime et on est unis. Même quand on s'engueule, on ne reste jamais loin les uns des autres, ahaha. (Est-ce que ce serait pas la plus belle preuve d'amour finalement qu'on puisse se faire ?)</p>
-
-                        <p>En tout cas, j'espère que cette nouvelle année t'apportera ce que tu souhaites au plus profond de toi. En particulier du bonheur, de la paix et surtout la santé. Et que tu arrêtes de manger dans la nuit… ah non c'est un peu trop ambitieux on garde ça pour l'année prochaine 😂</p>
-
-                        <p>Je n'ai pas encore 53 ans (Dieu merci ahah), mais n'oublie pas l'enfant qui sommeille en toi et ce qui le rendait heureux (parole de Poisson, la Vierge en toi doit souffler en lisant ça MAIS c'est important, crois-moi ahah). Alors, n'hésite pas à te faire plaisir un peu chaque jour, même dans les petites choses, car, sauf erreur de ma part, on n'a qu'une seule vie. Peut-être que dans la prochaine, tu seras un hérisson ? Donc autant en profiter un maximum et rêver grand.</p>
-
-                        <p>J'aime me dire qu'il n'est jamais trop tard et quand je stresse ou que je veux baisser les bras je me rappelle que :</p>
-
-                        <p class="letter-list">
-                            — Winston Churchill est devenu Premier ministre britannique pour la première fois à 65 ans.<br>
-                            — Harland Sanders n'a franchisé KFC qu'à 62 ans et est devenu millionnaire à 74 ans.<br>
-                            — Morgan Freeman a obtenu son premier très grand rôle au cinéma à 50 ans et est devenu une immense star ensuite. Etc…
-                        </p>
-
-                        <p>Bref tout ce blablabla pour te dire merci d'être cette personne aimante, inspirante et un peu folle aussi.</p>
-
-                        <p>Je t'aime, Papa.</p>
-
-                        <div class="letter-signature">
-                            <p>Ta fille,<br><span class="signature-name">Romane</span></p>
-                            <p class="letter-ps">P.-S. : On se voit ce week-end pour fêter ça dignement.</p>
-                        </div>
+                    <div class="letter-signature">
+                        <p>Ta fille,<br><span class="sig-name">Romane</span></p>
+                        <p class="ps">P.-S. : On se voit ce week-end pour fêter ça dignement.</p>
                     </div>
                 </div>
+
+                <div class="letter-footer">
+                    <span>Lettre personnelle</span>
+                    <span>Écrite avec amour</span>
+                </div>
+            </div>
+
+            <div class="controls">
+                <button class="ctrl-btn" onclick="backToEnvelope();">Retour</button>
+                <button class="ctrl-btn" onclick="printLetter();">Imprimer</button>
             </div>
         </div>
     </div>
 
     <script>
-        const openButton = document.getElementById('openButton');
-        const envelopeScreen = document.getElementById('envelopeScreen');
-        const letterScreen = document.getElementById('letterScreen');
-        const envelopeFlap = document.querySelector('.envelope-flap');
-
-        openButton.addEventListener('click', () => {
-            envelopeFlap.classList.add('open');
+        function createHearts() {
+            const container = document.getElementById('heartsContainer');
+            const heartCount = 12;
             
-            setTimeout(() => {
-                envelopeScreen.classList.add('hidden');
-                letterScreen.classList.add('visible');
-            }, 400);
-        });
-
-        document.addEventListener('keydown', (e) => {
-            if (e.key === 'Escape' && letterScreen.classList.contains('visible')) {
-                envelopeScreen.classList.remove('hidden');
-                letterScreen.classList.remove('visible');
-                envelopeFlap.classList.remove('open');
+            for (let i = 0; i < heartCount; i++) {
+                const heart = document.createElement('div');
+                heart.className = 'heart';
+                heart.textContent = '♥';
+                heart.style.left = Math.random() * 100 + '%';
+                heart.style.top = Math.random() * 100 + '%';
+                heart.style.animationDelay = Math.random() * 3 + 's';
+                heart.style.animationDuration = (Math.random() * 2 + 4) + 's';
+                container.appendChild(heart);
             }
-        });
+        }
+
+        function openLetter() {
+            document.getElementById('flap').classList.add('open');
+            setTimeout(() => {
+                document.querySelector('.envelope-state').classList.remove('active');
+                document.querySelector('.letter-state').classList.add('active');
+            }, 400);
+        }
+
+        function backToEnvelope() {
+            document.querySelector('.letter-state').classList.remove('active');
+            document.querySelector('.envelope-state').classList.add('active');
+            document.getElementById('flap').classList.remove('open');
+        }
+
+        function printLetter() {
+            window.print();
+        }
+
+        createHearts();
     </script>
 </body>
 </html>
