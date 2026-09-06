@@ -13,7 +13,7 @@
 
         body {
             font-family: 'Georgia', 'Garamond', serif;
-            background: #f8f6f3;
+            background: linear-gradient(135deg, #f5f3f0 0%, #e8e3dd 100%);
             min-height: 100vh;
             display: flex;
             justify-content: center;
@@ -63,10 +63,18 @@
             }
         }
 
+        .decorative-line {
+            width: 80px;
+            height: 2px;
+            background: #c41e3a;
+            margin: 0 auto 30px;
+            opacity: 0.6;
+        }
+
         .envelope {
-            width: 320px;
-            height: 200px;
-            margin: 0 auto 40px;
+            width: 340px;
+            height: 220px;
+            margin: 0 auto 50px;
             position: relative;
             perspective: 1000px;
         }
@@ -74,10 +82,10 @@
         .envelope-body {
             width: 100%;
             height: 100%;
-            background: #fefdfb;
-            border: 1.5px solid #e0d9ce;
+            background: linear-gradient(135deg, #faf8f5 0%, #f5f0e8 100%);
+            border: 2px solid #d4ccc0;
             position: relative;
-            box-shadow: 0 10px 35px rgba(0, 0, 0, 0.08);
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.12);
             animation: envelopeFloat 3s ease-in-out infinite;
         }
 
@@ -86,7 +94,7 @@
                 transform: translateY(0);
             }
             50% {
-                transform: translateY(-6px);
+                transform: translateY(-8px);
             }
         }
 
@@ -96,8 +104,8 @@
             left: 0;
             width: 100%;
             height: 55%;
-            background: #fefdfb;
-            border: 1.5px solid #e0d9ce;
+            background: linear-gradient(135deg, #f5f0e8 0%, #e8ddd0 100%);
+            border: 2px solid #d4ccc0;
             border-bottom: none;
             clip-path: polygon(0 0, 50% 100%, 100% 0);
             transform-origin: top center;
@@ -110,24 +118,35 @@
             transform: rotateX(-180deg);
         }
 
+        .envelope-line {
+            position: absolute;
+            top: 50%;
+            left: 0;
+            right: 0;
+            height: 1px;
+            background: linear-gradient(to right, transparent, #d4ccc0, transparent);
+            z-index: 4;
+        }
+
         .wax-seal-container {
             position: absolute;
-            bottom: 35px;
+            bottom: 25px;
             left: 50%;
             transform: translateX(-50%);
             z-index: 8;
         }
 
         .seal-circle {
-            width: 110px;
-            height: 110px;
-            background: radial-gradient(circle at 35% 35%, #c41e3a, #8b1428);
+            width: 120px;
+            height: 120px;
+            background: radial-gradient(circle at 35% 35%, #d41f3a, #8b1428);
             border-radius: 50%;
             display: flex;
             justify-content: center;
             align-items: center;
-            box-shadow: 0 8px 24px rgba(139, 20, 40, 0.35), inset -3px -3px 6px rgba(0, 0, 0, 0.4), inset 3px 3px 8px rgba(255, 255, 255, 0.15);
+            box-shadow: 0 10px 30px rgba(139, 20, 40, 0.4), inset -4px -4px 8px rgba(0, 0, 0, 0.35), inset 4px 4px 10px rgba(255, 255, 255, 0.2);
             animation: sealPulse 2.5s ease-in-out infinite;
+            border: 3px solid rgba(139, 20, 40, 0.3);
         }
 
         @keyframes sealPulse {
@@ -135,43 +154,42 @@
                 transform: scale(1);
             }
             50% {
-                transform: scale(1.02);
+                transform: scale(1.03);
             }
         }
 
         .seal-text {
-            font-size: 42px;
-            font-weight: bold;
+            font-size: 48px;
+            font-weight: 700;
             color: #fef8f0;
-            letter-spacing: 3px;
+            letter-spacing: 4px;
             font-family: 'Garamond', serif;
-            text-shadow: 0 2px 5px rgba(0, 0, 0, 0.4);
+            text-shadow: 0 3px 6px rgba(0, 0, 0, 0.5);
         }
 
         .open-button {
             background: #8b1428;
             color: #fefdfb;
             border: none;
-            padding: 14px 45px;
+            padding: 15px 50px;
             font-size: 15px;
             font-family: 'Georgia', serif;
             cursor: pointer;
             border-radius: 60px;
             transition: all 0.3s ease;
-            box-shadow: 0 6px 20px rgba(139, 20, 40, 0.25);
-            letter-spacing: 0.5px;
+            box-shadow: 0 8px 25px rgba(139, 20, 40, 0.3);
+            letter-spacing: 1px;
             font-weight: 500;
         }
 
         .open-button:hover {
             background: #a51d30;
-            transform: translateY(-2px);
-            box-shadow: 0 8px 28px rgba(139, 20, 40, 0.35);
+            transform: translateY(-3px);
+            box-shadow: 0 12px 35px rgba(139, 20, 40, 0.4);
         }
 
         .open-button:active {
-            transform: translateY(0);
-            box-shadow: 0 4px 15px rgba(139, 20, 40, 0.25);
+            transform: translateY(-1px);
         }
 
         .letter-screen {
@@ -195,7 +213,7 @@
 
         .letter-container {
             width: 100%;
-            max-width: 540px;
+            max-width: 560px;
             max-height: 90vh;
             overflow-y: auto;
             animation: letterAppear 0.8s ease-out;
@@ -204,7 +222,7 @@
         @keyframes letterAppear {
             from {
                 opacity: 0;
-                transform: translateY(15px);
+                transform: translateY(20px);
             }
             to {
                 opacity: 1;
@@ -213,30 +231,62 @@
         }
 
         .letter {
-            background: #fefdfb;
-            padding: 55px 45px;
-            border: 1px solid #e0d9ce;
-            box-shadow: 0 15px 45px rgba(0, 0, 0, 0.1);
+            background: linear-gradient(135deg, #faf8f5 0%, #f5f0e8 100%);
+            padding: 60px 50px;
+            border: 1.5px solid #d4ccc0;
+            box-shadow: 0 25px 60px rgba(0, 0, 0, 0.15);
             position: relative;
-            min-height: 700px;
+            min-height: 750px;
+        }
+
+        .letter::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-image: 
+                repeating-linear-gradient(
+                    0deg,
+                    transparent,
+                    transparent 2px,
+                    rgba(212, 204, 192, 0.05) 2px,
+                    rgba(212, 204, 192, 0.05) 3px
+                );
+            pointer-events: none;
+        }
+
+        .letter-decorative-top {
+            text-align: center;
+            margin-bottom: 35px;
+            padding-bottom: 20px;
+            border-bottom: 1px solid rgba(212, 204, 192, 0.3);
+        }
+
+        .ornament {
+            font-size: 18px;
+            color: #c41e3a;
+            opacity: 0.7;
+            letter-spacing: 8px;
         }
 
         .letter-content {
             position: relative;
             z-index: 1;
             font-size: 14px;
-            line-height: 1.85;
-            color: #3a3a3a;
+            line-height: 1.9;
+            color: #2a2a2a;
             font-family: 'Georgia', serif;
         }
 
         .letter-greeting {
-            font-size: 17px;
+            font-size: 18px;
             font-weight: 600;
             color: #c41e3a;
-            margin-bottom: 30px;
+            margin-bottom: 28px;
             font-style: italic;
-            letter-spacing: 0.3px;
+            letter-spacing: 0.5px;
         }
 
         .letter-content p {
@@ -245,85 +295,91 @@
         }
 
         .letter-list {
-            margin-left: 25px;
+            margin-left: 28px;
             font-style: italic;
-            color: #666;
+            color: #555;
             line-height: 2;
         }
 
         .letter-signature {
-            margin-top: 40px;
+            margin-top: 45px;
             text-align: right;
             font-style: italic;
+            padding-top: 25px;
+            border-top: 1px solid rgba(212, 204, 192, 0.3);
         }
 
         .signature-name {
-            font-size: 22px;
+            font-size: 24px;
             font-weight: 600;
             color: #c41e3a;
             display: inline-block;
-            margin-top: 8px;
-            letter-spacing: 0.5px;
+            margin-top: 10px;
+            letter-spacing: 1px;
         }
 
         .letter-ps {
-            margin-top: 25px;
+            margin-top: 20px;
             font-size: 13px;
             color: #888;
-            border-top: 1px solid #e0d9ce;
-            padding-top: 18px;
             font-style: italic;
         }
 
         .letter-container::-webkit-scrollbar {
-            width: 5px;
+            width: 6px;
         }
 
         .letter-container::-webkit-scrollbar-track {
-            background: transparent;
+            background: rgba(212, 204, 192, 0.1);
         }
 
         .letter-container::-webkit-scrollbar-thumb {
-            background: #d4ccc0;
+            background: rgba(196, 30, 58, 0.35);
             border-radius: 3px;
         }
 
         .letter-container::-webkit-scrollbar-thumb:hover {
-            background: #c41e3a;
+            background: rgba(196, 30, 58, 0.6);
         }
 
         @media (max-width: 600px) {
             .envelope {
-                width: 280px;
-                height: 170px;
+                width: 300px;
+                height: 190px;
             }
 
             .seal-circle {
-                width: 90px;
-                height: 90px;
+                width: 100px;
+                height: 100px;
             }
 
             .seal-text {
-                font-size: 34px;
+                font-size: 38px;
                 letter-spacing: 2px;
             }
 
             .letter {
-                padding: 40px 30px;
+                padding: 45px 35px;
                 min-height: auto;
             }
 
             .letter-content {
                 font-size: 13px;
+                line-height: 1.8;
             }
 
             .letter-greeting {
-                font-size: 15px;
+                font-size: 16px;
             }
 
             .open-button {
-                padding: 12px 35px;
+                padding: 12px 38px;
                 font-size: 14px;
+            }
+
+            .decorative-line {
+                width: 60px;
+                margin-bottom: 20px;
             }
 
             .letter-container {
@@ -333,23 +389,23 @@
 
         @media (max-width: 400px) {
             .envelope {
-                width: 240px;
-                height: 150px;
+                width: 260px;
+                height: 160px;
             }
 
             .seal-circle {
-                width: 75px;
-                height: 75px;
-                bottom: 25px;
+                width: 85px;
+                height: 85px;
+                bottom: 15px;
             }
 
             .seal-text {
-                font-size: 28px;
+                font-size: 32px;
                 letter-spacing: 1.5px;
             }
 
             .letter {
-                padding: 30px 22px;
+                padding: 35px 25px;
             }
 
             .letter-content {
@@ -366,7 +422,7 @@
             }
 
             .open-button {
-                padding: 10px 28px;
+                padding: 10px 30px;
                 font-size: 13px;
             }
         }
@@ -376,9 +432,12 @@
     <div class="container">
         <div class="envelope-screen" id="envelopeScreen">
             <div class="envelope-wrapper">
+                <div class="decorative-line"></div>
+                
                 <div class="envelope">
                     <div class="envelope-flap"></div>
                     <div class="envelope-body">
+                        <div class="envelope-line"></div>
                         <div class="wax-seal-container">
                             <div class="seal-circle">
                                 <span class="seal-text">JL</span>
@@ -386,6 +445,7 @@
                         </div>
                     </div>
                 </div>
+
                 <button class="open-button" id="openButton">Ouvrir la lettre</button>
             </div>
         </div>
@@ -393,6 +453,10 @@
         <div class="letter-screen" id="letterScreen">
             <div class="letter-container">
                 <div class="letter">
+                    <div class="letter-decorative-top">
+                        <div class="ornament">✦ ✦ ✦</div>
+                    </div>
+
                     <div class="letter-content">
                         <p class="letter-greeting">Je te souhaite un très bel anniversaire Papa,</p>
 
