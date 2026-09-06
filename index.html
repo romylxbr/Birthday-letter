@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="fr">
 <head>
@@ -14,7 +13,7 @@
 
         body {
             font-family: 'Georgia', 'Garamond', serif;
-            background: linear-gradient(135deg, #f5f3f0 0%, #e8e3dd 100%);
+            background: #f8f6f3;
             min-height: 100vh;
             display: flex;
             justify-content: center;
@@ -31,7 +30,6 @@
             position: relative;
         }
 
-        /* ÉCRAN 1: ENVELOPPE */
         .envelope-screen {
             position: absolute;
             width: 100%;
@@ -66,48 +64,45 @@
         }
 
         .envelope {
-            width: 280px;
-            height: 180px;
+            width: 320px;
+            height: 200px;
             margin: 0 auto 40px;
             position: relative;
             perspective: 1000px;
         }
 
-        /* Enveloppe - corps */
         .envelope-body {
             width: 100%;
             height: 100%;
-            background: linear-gradient(135deg, #faf8f5 0%, #f0ebe4 100%);
-            border: 2px solid #d4ccc0;
-            border-radius: 2px;
+            background: #fefdfb;
+            border: 1.5px solid #e0d9ce;
             position: relative;
-            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.15);
+            box-shadow: 0 10px 35px rgba(0, 0, 0, 0.08);
             animation: envelopeFloat 3s ease-in-out infinite;
         }
 
         @keyframes envelopeFloat {
             0%, 100% {
-                transform: translateY(0px);
+                transform: translateY(0);
             }
             50% {
-                transform: translateY(-8px);
+                transform: translateY(-6px);
             }
         }
 
-        /* Rabat de l'enveloppe */
         .envelope-flap {
             position: absolute;
             top: 0;
             left: 0;
             width: 100%;
-            height: 50%;
-            background: linear-gradient(135deg, #f5f0e8 0%, #e8ddd0 100%);
-            border: 2px solid #d4ccc0;
+            height: 55%;
+            background: #fefdfb;
+            border: 1.5px solid #e0d9ce;
             border-bottom: none;
             clip-path: polygon(0 0, 50% 100%, 100% 0);
             transform-origin: top center;
             transition: transform 0.8s cubic-bezier(0.68, -0.55, 0.265, 1.55);
-            transform: rotateX(0deg);
+            transform: rotateX(0);
             z-index: 5;
         }
 
@@ -115,44 +110,24 @@
             transform: rotateX(-180deg);
         }
 
-        /* Timbre Nighthawks */
-        .stamp {
+        .wax-seal-container {
             position: absolute;
-            top: 15px;
-            right: 15px;
-            width: 70px;
-            height: 70px;
-            background: white;
-            border: 1px solid #ccc;
-            transform: rotate(8deg);
-            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
-            z-index: 10;
-        }
-
-        .stamp svg {
-            width: 100%;
-            height: 100%;
-        }
-
-        /* Cachet JL */
-        .wax-seal {
-            position: absolute;
-            bottom: 50px;
+            bottom: 35px;
             left: 50%;
             transform: translateX(-50%);
             z-index: 8;
         }
 
         .seal-circle {
-            width: 90px;
-            height: 90px;
-            background: radial-gradient(circle at 30% 30%, #d41f3a, #8b1428);
+            width: 110px;
+            height: 110px;
+            background: radial-gradient(circle at 35% 35%, #c41e3a, #8b1428);
             border-radius: 50%;
             display: flex;
             justify-content: center;
             align-items: center;
-            box-shadow: 0 8px 20px rgba(139, 20, 40, 0.4), inset -2px -2px 5px rgba(0, 0, 0, 0.3), inset 2px 2px 5px rgba(255, 255, 255, 0.2);
-            animation: sealPulse 2s ease-in-out infinite;
+            box-shadow: 0 8px 24px rgba(139, 20, 40, 0.35), inset -3px -3px 6px rgba(0, 0, 0, 0.4), inset 3px 3px 8px rgba(255, 255, 255, 0.15);
+            animation: sealPulse 2.5s ease-in-out infinite;
         }
 
         @keyframes sealPulse {
@@ -160,46 +135,45 @@
                 transform: scale(1);
             }
             50% {
-                transform: scale(1.05);
+                transform: scale(1.02);
             }
         }
 
         .seal-text {
-            font-size: 32px;
+            font-size: 42px;
             font-weight: bold;
-            color: #f5f0e8;
-            letter-spacing: 2px;
+            color: #fef8f0;
+            letter-spacing: 3px;
             font-family: 'Garamond', serif;
-            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+            text-shadow: 0 2px 5px rgba(0, 0, 0, 0.4);
         }
 
-        /* Bouton */
         .open-button {
             background: #8b1428;
-            color: #faf8f5;
+            color: #fefdfb;
             border: none;
-            padding: 14px 40px;
-            font-size: 16px;
+            padding: 14px 45px;
+            font-size: 15px;
             font-family: 'Georgia', serif;
             cursor: pointer;
-            border-radius: 50px;
+            border-radius: 60px;
             transition: all 0.3s ease;
-            box-shadow: 0 6px 20px rgba(139, 20, 40, 0.3);
-            letter-spacing: 1px;
+            box-shadow: 0 6px 20px rgba(139, 20, 40, 0.25);
+            letter-spacing: 0.5px;
+            font-weight: 500;
         }
 
         .open-button:hover {
             background: #a51d30;
             transform: translateY(-2px);
-            box-shadow: 0 8px 25px rgba(139, 20, 40, 0.4);
+            box-shadow: 0 8px 28px rgba(139, 20, 40, 0.35);
         }
 
         .open-button:active {
             transform: translateY(0);
-            box-shadow: 0 4px 15px rgba(139, 20, 40, 0.3);
+            box-shadow: 0 4px 15px rgba(139, 20, 40, 0.25);
         }
 
-        /* ÉCRAN 2: LETTRE */
         .letter-screen {
             position: absolute;
             width: 100%;
@@ -221,7 +195,7 @@
 
         .letter-container {
             width: 100%;
-            max-width: 520px;
+            max-width: 540px;
             max-height: 90vh;
             overflow-y: auto;
             animation: letterAppear 0.8s ease-out;
@@ -230,7 +204,7 @@
         @keyframes letterAppear {
             from {
                 opacity: 0;
-                transform: translateY(20px);
+                transform: translateY(15px);
             }
             to {
                 opacity: 1;
@@ -239,139 +213,116 @@
         }
 
         .letter {
-            background: linear-gradient(135deg, #faf8f5 0%, #f5f0e8 100%);
-            padding: 50px 40px;
-            border: 1px solid #d4ccc0;
-            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.12);
+            background: #fefdfb;
+            padding: 55px 45px;
+            border: 1px solid #e0d9ce;
+            box-shadow: 0 15px 45px rgba(0, 0, 0, 0.1);
             position: relative;
-            min-height: 600px;
-        }
-
-        .letter::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background-image: 
-                repeating-linear-gradient(
-                    0deg,
-                    transparent,
-                    transparent 1px,
-                    rgba(196, 30, 58, 0.02) 1px,
-                    rgba(196, 30, 58, 0.02) 2px
-                );
-            pointer-events: none;
+            min-height: 700px;
         }
 
         .letter-content {
             position: relative;
             z-index: 1;
-            font-size: 15px;
-            line-height: 1.8;
-            color: #2a2a2a;
+            font-size: 14px;
+            line-height: 1.85;
+            color: #3a3a3a;
             font-family: 'Georgia', serif;
         }
 
         .letter-greeting {
-            font-size: 18px;
-            font-weight: bold;
+            font-size: 17px;
+            font-weight: 600;
             color: #c41e3a;
-            margin-bottom: 25px;
+            margin-bottom: 30px;
             font-style: italic;
+            letter-spacing: 0.3px;
         }
 
         .letter-content p {
-            margin-bottom: 18px;
+            margin-bottom: 20px;
             text-align: justify;
         }
 
         .letter-list {
-            margin-left: 20px;
+            margin-left: 25px;
             font-style: italic;
-            color: #555;
-            line-height: 1.9;
+            color: #666;
+            line-height: 2;
         }
 
         .letter-signature {
-            margin-top: 35px;
+            margin-top: 40px;
             text-align: right;
             font-style: italic;
         }
 
         .signature-name {
-            font-size: 20px;
-            font-weight: bold;
+            font-size: 22px;
+            font-weight: 600;
             color: #c41e3a;
             display: inline-block;
-            margin-top: 5px;
+            margin-top: 8px;
+            letter-spacing: 0.5px;
         }
 
         .letter-ps {
-            margin-top: 20px;
-            font-size: 14px;
-            color: #666;
-            border-top: 1px dashed #d4ccc0;
-            padding-top: 15px;
+            margin-top: 25px;
+            font-size: 13px;
+            color: #888;
+            border-top: 1px solid #e0d9ce;
+            padding-top: 18px;
+            font-style: italic;
         }
 
-        /* Scrollbar custom */
         .letter-container::-webkit-scrollbar {
-            width: 6px;
+            width: 5px;
         }
 
         .letter-container::-webkit-scrollbar-track {
-            background: rgba(212, 204, 192, 0.2);
+            background: transparent;
         }
 
         .letter-container::-webkit-scrollbar-thumb {
-            background: rgba(196, 30, 58, 0.4);
+            background: #d4ccc0;
             border-radius: 3px;
         }
 
         .letter-container::-webkit-scrollbar-thumb:hover {
-            background: rgba(196, 30, 58, 0.6);
+            background: #c41e3a;
         }
 
-        /* Mobile responsive */
         @media (max-width: 600px) {
             .envelope {
-                width: 240px;
-                height: 160px;
-            }
-
-            .stamp {
-                width: 60px;
-                height: 60px;
-                top: 10px;
-                right: 10px;
+                width: 280px;
+                height: 170px;
             }
 
             .seal-circle {
-                width: 70px;
-                height: 70px;
+                width: 90px;
+                height: 90px;
             }
 
             .seal-text {
-                font-size: 24px;
+                font-size: 34px;
+                letter-spacing: 2px;
             }
 
             .letter {
-                padding: 35px 25px;
+                padding: 40px 30px;
                 min-height: auto;
             }
 
             .letter-content {
-                font-size: 14px;
+                font-size: 13px;
             }
 
             .letter-greeting {
-                font-size: 16px;
+                font-size: 15px;
             }
 
             .open-button {
-                padding: 12px 30px;
+                padding: 12px 35px;
                 font-size: 14px;
             }
 
@@ -382,51 +333,40 @@
 
         @media (max-width: 400px) {
             .envelope {
-                width: 200px;
-                height: 130px;
-            }
-
-            .envelope-flap {
-                height: 40%;
-            }
-
-            .stamp {
-                width: 50px;
-                height: 50px;
-                top: 8px;
-                right: 8px;
+                width: 240px;
+                height: 150px;
             }
 
             .seal-circle {
-                width: 60px;
-                height: 60px;
-                bottom: 35px;
+                width: 75px;
+                height: 75px;
+                bottom: 25px;
             }
 
             .seal-text {
-                font-size: 18px;
-                letter-spacing: 1px;
+                font-size: 28px;
+                letter-spacing: 1.5px;
             }
 
             .letter {
-                padding: 25px 18px;
+                padding: 30px 22px;
             }
 
             .letter-content {
-                font-size: 13px;
-                line-height: 1.6;
+                font-size: 12px;
+                line-height: 1.7;
             }
 
             .letter-greeting {
                 font-size: 14px;
             }
 
-            .letter-content p {
-                margin-bottom: 14px;
+            .letter-list {
+                margin-left: 18px;
             }
 
             .open-button {
-                padding: 10px 25px;
+                padding: 10px 28px;
                 font-size: 13px;
             }
         }
@@ -434,37 +374,22 @@
 </head>
 <body>
     <div class="container">
-        <!-- ÉCRAN 1: ENVELOPPE -->
         <div class="envelope-screen" id="envelopeScreen">
             <div class="envelope-wrapper">
                 <div class="envelope">
-                    <div class="stamp">
-                        <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
-                            <rect x="5" y="5" width="90" height="90" fill="#c41e3a" stroke="#8b1428" stroke-width="2"/>
-                            <circle cx="50" cy="50" r="35" fill="#1a1a1a" opacity="0.8"/>
-                            <ellipse cx="30" cy="40" rx="8" ry="12" fill="#e8d5b7"/>
-                            <ellipse cx="50" cy="35" rx="6" ry="10" fill="#e8d5b7"/>
-                            <ellipse cx="70" cy="40" rx="8" ry="12" fill="#e8d5b7"/>
-                            <rect x="15" y="55" width="70" height="25" fill="#1a1a1a" opacity="0.9"/>
-                            <text x="50" y="72" font-size="8" fill="#e8d5b7" text-anchor="middle" font-family="serif">1954</text>
-                        </svg>
-                    </div>
-
                     <div class="envelope-flap"></div>
                     <div class="envelope-body">
-                        <div class="wax-seal">
+                        <div class="wax-seal-container">
                             <div class="seal-circle">
                                 <span class="seal-text">JL</span>
                             </div>
                         </div>
                     </div>
                 </div>
-
                 <button class="open-button" id="openButton">Ouvrir la lettre</button>
             </div>
         </div>
 
-        <!-- ÉCRAN 2: LETTRE -->
         <div class="letter-screen" id="letterScreen">
             <div class="letter-container">
                 <div class="letter">
